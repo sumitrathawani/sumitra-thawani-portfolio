@@ -297,7 +297,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        padding: clamp(5.5rem, 12vw, 8rem) clamp(1.25rem, 5vw, 3rem) clamp(3rem, 8vw, 4rem);
+        padding: clamp(5.5rem, 12vw, 8rem) clamp(1.25rem, 5vw, 3rem)
+          clamp(3rem, 8vw, 4rem);
         max-width: 1200px;
         margin: 0 auto;
         width: 100%;
@@ -732,6 +733,170 @@
         gap: 0.4rem;
       }
 
+      /* SESSIONS — editorial showcases */
+      .sessions-intro {
+        max-width: 52rem;
+        font-size: 0.95rem;
+        color: var(--muted);
+        line-height: 1.75;
+        margin-bottom: 2.75rem;
+      }
+      .sessions-showcases {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .session-showcase {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        gap: clamp(1.5rem, 4vw, 2.75rem);
+        align-items: center;
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .session-showcase.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .session-showcase + .session-showcase {
+        margin-top: 4rem;
+        padding-top: 4rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .session-showcase-photos {
+        min-width: 0;
+      }
+      .session-collage {
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--dark3);
+        min-height: clamp(220px, 32vw, 380px);
+      }
+      .session-collage--compucom {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        height: 100%;
+      }
+      .session-collage--compucom .session-collage-main {
+        flex: 0 0 60%;
+        min-width: 0;
+        min-height: 0;
+      }
+      .session-collage--compucom .session-collage-main .session-collage-img {
+        width: 100%;
+        height: 100%;
+        min-height: clamp(220px, 32vw, 380px);
+        object-fit: cover;
+        display: block;
+      }
+      .session-collage--compucom .session-collage-stack {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .session-collage--compucom .session-collage-cell {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+      }
+      .session-collage--compucom .session-collage-cell .session-collage-img {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: cover;
+        display: block;
+      }
+      .session-collage--kanoria {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        height: 100%;
+      }
+      .session-collage--kanoria .session-collage-wide {
+        flex: 65 1 0;
+        min-width: 0;
+        overflow: hidden;
+      }
+      .session-collage--kanoria .session-collage-narrow {
+        flex: 35 1 0;
+        min-width: 0;
+        overflow: hidden;
+      }
+      .session-collage--kanoria .session-collage-img {
+        width: 100%;
+        height: 100%;
+        min-height: clamp(220px, 32vw, 380px);
+        object-fit: cover;
+        display: block;
+      }
+      .session-collage-img {
+        transition:
+          transform 0.55s ease,
+          filter 0.55s ease;
+        transform-origin: center center;
+      }
+      .session-showcase:hover .session-collage-img {
+        transform: scale(1.03);
+        filter: brightness(1.1);
+      }
+      .session-showcase-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        min-width: 0;
+        padding: 0.25rem 0;
+      }
+      .session-showcase-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--cyan);
+      }
+      .session-showcase-topic {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+      .session-showcase-desc {
+        font-size: 0.92rem;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+      .session-showcase-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+      .session-showcase-stats {
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        color: rgba(155, 143, 192, 0.95);
+        padding-top: 0.35rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      @media (max-width: 960px) {
+        .session-showcase {
+          grid-template-columns: 1fr;
+          gap: 1.75rem;
+        }
+        .session-showcase-info {
+          order: 2;
+        }
+        .session-showcase-photos {
+          order: 1;
+        }
+      }
+
       /* CONTACT */
       .contact-wrap {
         background: var(--dark2);
@@ -1083,6 +1248,7 @@
           <li><a href="#skills">Skills</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#sessions">Sessions</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -1343,6 +1509,21 @@
         </div>
       </section>
 
+      <!-- SESSIONS -->
+      <section id="sessions" aria-labelledby="sessions-heading">
+        <div class="section-label">Community &amp; Speaking</div>
+        <h2 id="sessions-heading" class="section-title">
+          Workshops &amp; <span class="accent">Sessions</span>
+        </h2>
+        <p class="sessions-intro">
+          Conducted training sessions and workshops on Full Stack Development
+          and AI integration at leading institutions. Sharing knowledge with
+          students and professionals on building scalable applications and
+          implementing modern AI features.
+        </p>
+        <div class="sessions-showcases" id="sessionsShowcases"></div>
+      </section>
+
       <!-- CONTACT -->
       <section id="contact">
         <div class="section-label">Let's connect</div>
@@ -1492,6 +1673,158 @@
       document.querySelectorAll(".exp-item").forEach((c, i) => {
         c.style.transitionDelay = `${i * 0.15}s`;
       });
+
+      const sessions = [
+        {
+          college: "Compucom Institute of Technology, Jaipur",
+          topic: "Full Stack Development — Expert Session",
+          description:
+            "Conducted an expert session on Full Stack Development roadmap for MCA students, covering React.js, Node.js, career pathways, and live implementation strategies.",
+          tags: [
+            "Full Stack",
+            "React.js",
+            "Node.js",
+            "Career Roadmap",
+            "AI Features",
+          ],
+          images: [
+            "assets/sessions/c1.jpeg",
+            "assets/sessions/c3.jpg",
+            "assets/sessions/c4.jpeg",
+          ],
+          stats: "50+ Students  ·  Interactive Q&A  ·  Live Demo",
+        },
+        {
+          college: "Kanoria Girls College, Jaipur",
+          topic: "Full Stack Development Roadmap & Masterclass",
+          description:
+            "Delivered a masterclass on Full Stack Development for BCA,MCA and B.Tech students, walking through the complete roadmap from fundamentals to advanced concepts.",
+          tags: [
+            "Full Stack",
+            "React.js",
+            "Node.js",
+            "AI Integration",
+            "Masterclass",
+          ],
+          images: ["assets/sessions/k1.jpeg", "assets/sessions/k2.jpeg"],
+          stats: "50+ Students  ·  Hands-on Session  ·  Roadmap Walkthrough",
+        },
+      ];
+
+      const tagClasses = [
+        "tag-cyan",
+        "tag-mag",
+        "tag-violet",
+        "tag-amber",
+        "tag-lime",
+      ];
+
+      function buildCompucomCollage(imagePaths) {
+        const wrap = document.createElement("div");
+        wrap.className = "session-collage session-collage--compucom";
+
+        const main = document.createElement("div");
+        main.className = "session-collage-main";
+        const mainImg = document.createElement("img");
+        mainImg.className = "session-collage-img";
+        mainImg.src = imagePaths[0];
+        mainImg.alt = "";
+        mainImg.loading = "lazy";
+        main.appendChild(mainImg);
+
+        const stack = document.createElement("div");
+        stack.className = "session-collage-stack";
+        for (let i = 1; i < 3; i += 1) {
+          const cell = document.createElement("div");
+          cell.className = "session-collage-cell";
+          const img = document.createElement("img");
+          img.className = "session-collage-img";
+          img.src = imagePaths[i];
+          img.alt = "";
+          img.loading = "lazy";
+          cell.appendChild(img);
+          stack.appendChild(cell);
+        }
+
+        wrap.append(main, stack);
+        return wrap;
+      }
+
+      function buildKanoriaCollage(imagePaths) {
+        const wrap = document.createElement("div");
+        wrap.className = "session-collage session-collage--kanoria";
+
+        const wide = document.createElement("div");
+        wide.className = "session-collage-wide";
+        const imgA = document.createElement("img");
+        imgA.className = "session-collage-img";
+        imgA.src = imagePaths[0];
+        imgA.alt = "";
+        imgA.loading = "lazy";
+        wide.appendChild(imgA);
+
+        const narrow = document.createElement("div");
+        narrow.className = "session-collage-narrow";
+        const imgB = document.createElement("img");
+        imgB.className = "session-collage-img";
+        imgB.src = imagePaths[1];
+        imgB.alt = "";
+        imgB.loading = "lazy";
+        narrow.appendChild(imgB);
+
+        wrap.append(wide, narrow);
+        return wrap;
+      }
+
+      const sessionsShowcases = document.getElementById("sessionsShowcases");
+      if (sessionsShowcases) {
+        sessions.forEach((session, index) => {
+          const article = document.createElement("article");
+          article.className = "session-showcase";
+          article.style.transitionDelay = index === 0 ? "0s" : "0.15s";
+
+          const photos = document.createElement("div");
+          photos.className = "session-showcase-photos";
+          const collage =
+            session.images.length >= 3
+              ? buildCompucomCollage(session.images)
+              : buildKanoriaCollage(session.images);
+          photos.appendChild(collage);
+
+          const info = document.createElement("div");
+          info.className = "session-showcase-info";
+
+          const label = document.createElement("p");
+          label.className = "session-showcase-label";
+          label.textContent = session.college;
+
+          const topic = document.createElement("h3");
+          topic.className = "session-showcase-topic";
+          topic.textContent = session.topic;
+
+          const desc = document.createElement("p");
+          desc.className = "session-showcase-desc";
+          desc.textContent = session.description;
+
+          const tagsRow = document.createElement("div");
+          tagsRow.className = "session-showcase-tags";
+          session.tags.forEach((tagText, tagIndex) => {
+            const pill = document.createElement("span");
+            pill.className = `tag ${tagClasses[tagIndex % tagClasses.length]}`;
+            pill.textContent = tagText;
+            tagsRow.appendChild(pill);
+          });
+
+          const stats = document.createElement("p");
+          stats.className = "session-showcase-stats";
+          stats.textContent = session.stats;
+
+          info.append(label, topic, desc, tagsRow, stats);
+          article.append(photos, info);
+          sessionsShowcases.appendChild(article);
+          observer.observe(article);
+        });
+      }
     </script>
   </body>
 </html>
